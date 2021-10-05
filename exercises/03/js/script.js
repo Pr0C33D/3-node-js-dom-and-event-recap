@@ -2,16 +2,6 @@
 // Surasti h1 antraste h1 antrastei prideti CSS class "simba"
 
 // Surasti visas ingredientus Kiekvienam ingredientui prideti CSS class "darzove"
-{/* 
-    <h1>Sriubos receptas</h1>
-    <ul>
-        <li>Morkos</li>
-        <li>Bulves</li>
-        <li>Svogunas</li>
-        <li>Vanduo</li>
-        <li>Druska</li>
-    </ul> 
-*/}
 const h1DOM = document.querySelector('h1');
 h1DOM.classList.add('simba');
 
@@ -21,4 +11,3 @@ for (let i = 0; i < liDOMs.length; i++) {
     const ingredient = liDOMs[i];
     ingredient.classList.add('darzove');
 };
-
