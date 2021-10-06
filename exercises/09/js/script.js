@@ -3,17 +3,26 @@ const plusDOM = document.querySelector('.plus');
 const resetDOM = document.querySelector('.reset');
 const numberDOM = document.querySelector('.number');
 const h1DOM = document.querySelector('h1');
-h1DOM.innerText = "Tu pasileidai zaidima - sekmes!";
+const gameStart = "Tu pasileidai zaidima - sekmes!";
 const defaultH1 = h1DOM.innerText;
 const swapTextOnClick = "Zaidimas progrese";
 const ulDOM = document.querySelector('ul');
 
-let button;
+let whichButton;
 let pressCounter = 0;
+
+gameStartText();
+
+function gameStartText(){
+    const node = document.createElement("LI");
+    const textnode = document.createTextNode(`${gameStart}`);
+    node.appendChild(textnode);
+    ulDOM.appendChild(node);
+}
 
 function appendNode(){
     const node = document.createElement("LI");
-    const textnode = document.createTextNode(`Paspaudei ${button} ir dabartinis rezultatas yra ` + pressCounter);
+    const textnode = document.createTextNode(`Paspaudei ${whichButton} ir dabartinis rezultatas yra ` + pressCounter);
     node.appendChild(textnode);
     ulDOM.appendChild(node);
 }
@@ -22,7 +31,7 @@ function minus() {
     pressCounter--;
     numberDOM.innerText = pressCounter;
     h1DOM.innerText = swapTextOnClick;
-    button = "Minusą";
+    whichButton = "Minusą";
     appendNode();
 }
 
@@ -30,7 +39,7 @@ function plus() {
     pressCounter++;
     numberDOM.innerText = pressCounter;
     h1DOM.innerText = swapTextOnClick;
-    button = "Pliusą";
+    whichButton = "Pliusą";
     appendNode();
 }
 
@@ -38,8 +47,10 @@ function resetNumber() {
     pressCounter = 0;
     numberDOM.innerText = pressCounter;
     h1DOM.innerText = defaultH1;
-    button = "RESET"
+    whichButton = "RESET"
     appendNode();
+    whichButton = gameStart;
+    gameStartText();
 }
 
 minusDOM.addEventListener('click', minus);
